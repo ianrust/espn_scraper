@@ -103,7 +103,7 @@ def get_week_scoreboard_url(league, season_year, season_type, week, group=None):
         raise ValueError("League must be {} to get week scoreboard url".format(get_week_leagues()))
 
 def get_game_url(url_type, league, espn_id):
-    valid_url_types = ["recap", "boxscore", "playbyplay", "conversation", "gamecast"]
+    valid_url_types = ["recap", "boxscore", "playbyplay", "conversation", "game"]
     if url_type not in valid_url_types:
         raise ValueError("Unknown url_type for get_game_url. Valid url_types are {}".format(valid_url_types))
     return "{}/{}/{}?gameId={}&xhr=1".format(BASE_URL, league, url_type, espn_id)
@@ -190,7 +190,7 @@ def get_date_from_scoreboard_url(url):
 def get_data_type_from_url(url):
     """ Guess and return the data_type based on the url """
     data_type = None
-    valid_data_types = ["scoreboard", "recap", "boxscore", "playbyplay", "conversation", "gamecast"]
+    valid_data_types = ["scoreboard", "recap", "boxscore", "playbyplay", "conversation", "game"]
     for valid_data_type in valid_data_types:
         if valid_data_type in url:
             data_type = valid_data_type
